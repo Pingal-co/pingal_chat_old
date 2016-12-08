@@ -1,0 +1,30 @@
+{
+  "name": "pingal_chat",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "dependencies": {
+    "@exponent/react-native-action-sheet": "git+https://github.com/FaridSafi/react-native-action-sheet.git",
+    "graceful-fs": "4.1.5",
+    "md5": "^2.1.0",
+    "moment": "^2.13.0",
+    "react": "15.2.1",
+    "react-native": "0.31.0",
+    "react-native-camera": "git+https://github.com/lwansbrough/react-native-camera.git",
+    "react-native-camera-roll-picker": "1.1.7",
+    "react-native-communications": "^2.0.0",
+    "react-native-device-info": "^0.9.5",
+    "react-native-dismiss-keyboard": "^1.0.0",
+    "react-native-form-generator": "^0.9.9",
+    "react-native-invertible-scroll-view": "^1.0.0",
+    "react-native-nav": "1.1.4",
+    "react-native-parsed-text": "0.0.15",
+    "react-native-store": "^0.4.1",
+    "react-native-vector-icons": "^2.1.0",
+    "realm": "^0.14.3",
+    "tcomb-form-native": "^0.6.1",
+    "wordpos": "^1.1.0"
+  }
+}

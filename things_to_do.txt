@@ -1,0 +1,143 @@
+#############################
+
+Things to do in Nov : Nov 4, 2016
+
+ 1) React Native
+  - Thought screen
+    - fix passing user info to Chat lobby
+    - update react native chat server
+    - Add invitaion screen
+    
+  - Chat Lobby
+    - Loading of topic slides
+    - Receiving broadcast invitation
+    
+  2) Backend:
+      - Phoenix server cleanup & installation
+      - git sync all repos and clean/backup the unwanted
+      - setup the elastic server and phoenix client
+      
+  3) Elasticsearch
+      - update phoenix to index the pages
+      - update phoenix and query
+      - function score 
+
+  4) Android and iOS accounts
+    - submit and test application on iOS
+    - submit and test application on android
+
+  5) Misc accounts: Github, Google, Hoover, CodePush
+    - integrate code push into app
+
+  6) Desktop App
+
+  7) Website
+      - update the website. Add invitaion code.
+
+######################
+  4) Rich Mini Apps Interface (Chat)
+    - Parsed Views: Rows, Text, Image, Buttons, TextInput, ListView 
+    - Text: H1, H2, H3, Bold, Italics, Underline, Color, Link
+    - Build Examples
+    - Fix Parsed View and SlideText
+
+  5) Match Bots and Experts
+
+  
+  
+############################
+Planned Features (Next 2 months: Dec 30)
+1) React Native
+  - Handle Edge Cases : empty location, empty thought, ...
+  - User Verification 
+  - User Avatars
+  - Actions: Channel browsing and bots
+  - Add Form elements
+  - Invite / Forward Friends
+  - Add Useful/Fun bots 
+  - Parsed Views
+  - Channel properties: mute, sponsored , ...
+  - Bot script
+  - Command:  .people, .help, .search
+  - Add Camera and Images transfer
+  - Sponsor / Revenue: Add Payment through ACH (see dwola)
+
+2) Phoenix
+  - add bot framework
+  - play with handle_out (filtered views)
+  - elixir and python channels
+
+3) AI Query:
+  - Train bots using deep learning methods
+
+4) AWS 
+  - Setup S3 for images
+
+5) Use Cases for each domain
+
+  ########################
+  -- fetch, store and send messages from/to phoenix server
+  -- ping a message from server every sec
+  -- for each message, check if pingal needs to reply. If yes, generate the appropriate reply
+  -- url for each lobby and each slide
+  -- Slide: name and greeting of each lobby
+  -- Location: send location to the server
+
+- Room (Lobby with a back button) :
+  -- top bar with back function
+  -- Other things same as Main Lobby
+
+- Group messages/slides by:
+  -- location
+  -- date
+  -- Group into slides topic
+  
+
+- Composer:
+  -- Create a email-to box (yoga@localhost)
+  -- Create a slide or card interface (see: http://nativebase.io/docs/v0.5.2/components#card):
+  -- create url / channel / room for each slide
+  -- Fix the json data exchange format
+
+  -- Slide as User Message:
+    --- Slide is a multi-line message (or a mini-webpage)
+       with list, images, audio, video, buttons, links, linkedObjects
+
+- Authentication and Access Control
+  -- Nickname or username
+  -- sms verification
+  -- Premium Features
+
+- Commands
+ -- [.\]people : Slide with a list of nearby people channels
+ -- [.\]all
+ -- [.\#@]rohit (user): Slide with a list of user messages
+ -- [.\]yoga (topic): Slide with a list of subtopic channels
+ -- [.\]atmark (Place or organization): Slide with a list of channels
+ -- \service msg
+ -- \emoticon msg
+ -- \search rohit <=> #rohit
+ -- \search "people who like pizza" <=> #people #pizza
+ -- \email rohit <=> @rohit
+ -- \organization mit <=> @mit
+ -- \location mit <=> .mit
+ -- \datetime today at 3pm <=>
+ -- \topic yoga near mit <=> #yoga .mit
+ -- \panera tea |> \buy
+
+ - Topic Slide (for a subtopic in a topic in a locality):
+   -- Phoenix: select the best 3 room channels based on user past interest
+
+- Deep Links and Buttons:
+  -- Linked
+
+- Features for marketing & revenues
+ -- Forward a slide or a lobby to a friend (sms, email)
+ -- Pay to promote a slide or lobby
+ -- Pay to message in a lobby chat room
+ -- Pay to see the full near by contact list
+
+- Backend Features:
+  -- Everything is local and temporary
+
+- AI backend
