@@ -84,17 +84,18 @@ let chatServer = (user = DEFAULT_USER) => {
         // receiving message in the room
         
         room.on("get:slides_in_room", (messages) => {
-          console.log('Received slides_in_room ...')
-          console.log(messages)
-          slides = messages.slides.map((slide) => {
-              console.log(slide)
-              return {
+          //console.log('Received slides_in_room ...')
+          //console.log(messages)
+          messages.slides.map((slide) => {
+              slide = {
                 ...slide,
                 _id: Math.round(Math.random() * 1000000), 
-                slide_id: slide.id,     
-            } ;
+                slide_id: 'save-id-' + slide.id,     
+            } 
+            //console.log(slide)
+            renderReceive(slide)
           })
-          renderReceive(slides)
+          
         })
 
        /*
@@ -121,8 +122,8 @@ let chatServer = (user = DEFAULT_USER) => {
     // sending message in the lobby
     let send = (room, messages, event="add:slide") => {
         console.log("sending to room...")
-        console.log(room)
-        console.log(messages)
+        //console.log(room)
+        //console.log(messages)
         
         messages.map((message) => {
 

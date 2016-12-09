@@ -161,7 +161,7 @@ export default class Thought extends Component{
     }
 
      getSlides() {
-        console.log(`slides: ${this._slides}`)
+        //console.log(`slides: ${this._slides}`)
         return this._slides;
     }
 
@@ -175,13 +175,14 @@ export default class Thought extends Component{
         let topic = message.params.room_name 
         let user = message.user
         let body = message.body
-        //let server = ChatServer(user.name)
+        let server = ChatServer(user._id)
         // server: server,
         let params = {
                 topic_id: topic_id,
                 topic: topic,              
                 user: user,
                 channel_tabs: [topic],
+                server: server,
                 body: body
             }
        console.log(params)

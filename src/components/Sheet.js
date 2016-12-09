@@ -299,8 +299,8 @@ export default class Sheet extends Component {
   }
 
   render() {
-    console.log("rendering SlideView ...")
-    console.log(this.props)
+    // console.log("rendering SlideView ...")
+    // console.log(this.props)
     const position = this.props.position
     return (
       <View style={styles[position].container}>

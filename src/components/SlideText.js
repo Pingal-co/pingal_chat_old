@@ -174,7 +174,7 @@ export default class SlideText extends Component {
   render() {
     const body = this.props.currentSlide.body
     const position = this.props.position
-    console.log(`body: ${body} `)
+    // console.log(`body: ${body} `)
     const PATTERN = {
       url: /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/,
       phone: /[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}/,

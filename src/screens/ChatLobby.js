@@ -8,6 +8,30 @@ import ChatServer from '../components/ChatServer';
 import Channel from '../components/Channel';
 import {DB} from '../components/DataModel'
 
+/*
+ // May be we want to use mobx for state management instead of setState
+ import { observable } from 'mobx'
+ export default class Store {
+        @observable slides: [],
+        @observable user: {},
+        @observable channel_tabs:[],
+        @observable channel: {name: '', id:''},
+        @observable channel_properties: {}
+
+        addToSlides = () => {}
+        deleteSlide = () => {}
+        updateSlide = () => {}
+        addUser = () => {}
+        updateUser = () => {}
+        addChannelTabs = () => {}
+        deleteChannelTabs = () => {}
+        addChannel = () => {}
+        updateChannel = () => {}
+        updateChannelProperty = () => {}
+}
+ 
+*/
+
 export default class ChatLobby extends Component {
   constructor(props) {
       super(props);
@@ -22,7 +46,8 @@ export default class ChatLobby extends Component {
       this.topic_id = this.props.route.params.topic_id
       this.channel_tabs = this.props.route.params.channel_tabs || []
 
-      this.server = ChatServer(this.user._id)
+      //this.server = ChatServer(this.user._id)
+      this.server = this.props.route.params.server
       this.channel = this.server.lobby(this.topic_id, this.onReceive.bind(this))
  
       this.state = {

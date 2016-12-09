@@ -112,7 +112,7 @@ export default class CustomChannel extends Component {
     }
 
     getSlides() {
-        console.log(`slides: ${this._slides}`)
+        //console.log(`slides: ${this._slides}`)
         return this._slides;
     }
 
@@ -323,8 +323,8 @@ export default class CustomChannel extends Component {
             this.resetInputToolbar();
         }
 
-        console.log("onSend")
-        console.log(slides)
+        //console.log("onSend")
+        //console.log(slides)
         this.props.onSend(slides);
         this.scrollToBottom();
 

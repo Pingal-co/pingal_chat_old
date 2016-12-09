@@ -169,21 +169,68 @@ export default class Channel extends Component {
         return currentSlides.concat(slides);
     }
 
+    
     static update(currentSlides = [], slide) {
-        updated = false
+        // We can have better performance with a different data structure e.g. dictionary and sorted array 
+        // clone for in-place editing
         slides = currentSlides
-        slides.forEach((currentslide, index) => {
-            if (slide.edit == true && currentslide.user._id === slide.user._id && currentslide.edit_id === slide.edit_id) {
-                    slides[index] = slide
-                    updated = true
-                    //console.log("updated")
-                    //console.log(slide.edit_id)
-                }
-        }) 
+        shouldAppend = true
         
-        if (!updated) (
+        let previous = (currentslide, index) => {
+            return (currentslide.user._id === slide.user._id) && ("edit_id" in slide) && (currentslide.edit_id === slide.edit_id)
+        }
+        
+        let duplicate = (currentslide, index) => {
+            return (currentslide.user._id === slide.user._id) && (currentslide.slide_id === slide.slide_id)
+        }
+        
+        previousSlideIndex = currentSlides.findIndex(previous)
+        if (previousSlideIndex >= 0) { 
+            // edit mode and not the first word 
+            // save mode but previous edit exist
+            //console.log("edited")
+           // console.log(previousSlideIndex)        
+            slides[previousSlideIndex] = slide
+            
+        } else if (currentSlides.findIndex(duplicate) < 0) {
+            // append only new slides loaded from database
             slides = Channel.append(currentSlides,slide)
-        )      
+            //console.log("append")
+        }
+
+        /*
+        slides.forEach((currentslide, index) => {         
+            // Case 1: Duplicate Slide in Editing / Saved mode
+            // Update the slide being edited of the same user
+            // currentslide.user._id === slide.user._id && 
+            if ( currentslide.slide_id === slide.slide_id) 
+            {
+                    slides[index] = slide
+                    shouldAppend = false
+                    console.log("being edited or duplicate")
+                    //console.log(slide.edit_id)
+            }
+            
+            if ( currentslide.slide_id !== slide.slide_id &&
+                currentslide.edit_id === slide.edit_id) 
+            {
+                   slides[index] = slide
+                    shouldAppend = false
+                    console.log("just saved")
+                    //console.log(slide.edit_id)
+            }
+            
+  
+
+        })   
+        // Case 3: New Slide
+        if (shouldAppend) {
+            console.log("append")
+            slides = Channel.append(currentSlides,slide)
+        }
+        */
+        console.log(slide)    
+      
         return slides
     }
 
@@ -281,11 +328,11 @@ export default class Channel extends Component {
         let newSlidesContainerHeight = this.getMaxHeight() - this.calculateInputToolbarHeight(newComposerHeight) - this.getKeyboardHeight();
         let newText = e.nativeEvent.text;
         this.setState((previousState) => {
-        return {
-            text: newText,
-            composerHeight: newComposerHeight,
-            slidesContainerHeight: this.prepareSlidesContainerHeight(newSlidesContainerHeight),
-        };
+            return {
+                text: newText,
+                composerHeight: newComposerHeight,
+                slidesContainerHeight: this.prepareSlidesContainerHeight(newSlidesContainerHeight),
+            };
         });
         // test if last character is space: token by token sending in English
         if (/\s+$/.test(newText)) {
@@ -314,14 +361,15 @@ export default class Channel extends Component {
             console.log("total words: ", num_words)
             if (num_words === 1) {
                 edit_slide_id = 'edit-id-' + Math.round(Math.random() * 1000000)
+                temp_slide_id = 'temp-id-' + Math.round(Math.random() * 1000000)
             }
-            temp_slide_id = 'temp-id-' + Math.round(Math.random() * 1000000)
-           
+            new_slide_id = 'temp-id-' + Math.round(Math.random() * 1000000)
+           // edit_id: edit_slide_id,
             return {
                 ...slide,
-                _id: temp_slide_id,
+                _id: new_slide_id,
                 edit: !save,
-                edit_id: edit_slide_id,
+                edit_id: edit_slide_id,           
                 slide_id: temp_slide_id,
                 body: this.state.text,
                 user: this.props.user,

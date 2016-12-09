@@ -150,8 +150,8 @@ export default class ThoughtContainer extends Component {
         slide['location'] = this.state.location
         slide['device_info'] = this.props.device_info
 
-        console.log(data)
-        console.log(slide)
+        // console.log(data)
+        // console.log(slide)
         this.props.onSend([slide])
     }
 

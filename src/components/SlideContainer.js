@@ -11,6 +11,7 @@ export default class SlideContainer extends Component {
   constructor(props) {
     super(props);
     this.renderFooter = this.renderFooter.bind(this);
+    this.renderSlide = this.renderSlide.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -63,14 +64,9 @@ export default class SlideContainer extends Component {
     }
     return list.reduce(groupedfn, {})
   }
-  renderSlide(slides, user){
-    // group slides by key and sort by time 
-    grouped = this.group(slides, "user", "_id")
-    console.log(grouped)
 
-    grouped_children = Object.keys(grouped).map((key) => {
-        slides = grouped[key]
-        children = slides.map((slide, index) => {
+  renderSlide(slides, user) {
+    children = slides.map((slide, index) => {
               if (!slide._id) {
                 console.warn('PingalChat: `_id` is missing for slide', JSON.stringify(slide));
               }
@@ -91,6 +87,18 @@ export default class SlideContainer extends Component {
               return <Slide {...slideProps}/>;
         
             })
+      return children
+
+  }
+
+  renderGroupedSlide(slides, user){
+    // group slides by key and sort by time 
+    grouped = this.group(slides, "user", "_id")
+    console.log(grouped)
+
+    grouped_children = Object.keys(grouped).map((key) => {
+        slides = grouped[key]
+        children = this.renderSlide(slides, user)
       
         const invertibleScrollViewProps = { 
             ...this.props.invertibleScrollViewProps, 
@@ -115,7 +123,7 @@ export default class SlideContainer extends Component {
     //console.log(`Message container: ${this.props.slides}`)
     const invertibleScrollViewProps = {
       ...this.props.invertibleScrollViewProps,
-      inverted: false,
+      inverted: true,
     }
     const slides = this.props.slides
     const user = this.props.user
